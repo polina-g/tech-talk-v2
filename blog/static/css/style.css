@@ -15,8 +15,21 @@ main {
 
 footer {
     padding-top: 0;
+    height: 70px;
+    
 }
 
 nav {
     height: 80px;
+}
+
+/* .landing-image {
+    width: 100%;
+} */
+
+.landing-background {
+    background-image: url('https://i.imgur.com/zNp7r3Y.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 100vh;
 }
