@@ -15,8 +15,35 @@ main {
 
 footer {
     padding-top: 0;
+    height: 70px;
+    
 }
 
 nav {
     height: 80px;
+}
+
+.landing-main-container{
+    background-image: url('https://i.imgur.com/zNp7r3Y.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.landing-auth {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: absolute;
+    margin-top: 38%;
+    width: 100%
+}
+
+.landing-auth-button {
+    opacity: 0.6;
+}
+
+.landing-auth-button:hover{
+    opacity: 0.4;
 }
