@@ -16,6 +16,3 @@ class BlogIndex(ListView):
         queryset = BlogEntry.objects.filter()
         return queryset
 
-# def blogs_index(request):
-#     blogs = BlogEntry.objects.all()
-#     return render(request, "blogs/index.html", {"blogs": blogs})
