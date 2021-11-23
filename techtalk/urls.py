@@ -17,12 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path("", include("blog.urls")),
-    path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('admin/', admin.site.urls),
     path('members/', include('django.contrib.auth.urls')), 
     # points to authentication
     path('members/', include('members.urls')), 
     # points to members app
-  
+
     ]
