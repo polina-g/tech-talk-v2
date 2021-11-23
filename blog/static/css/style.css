@@ -47,3 +47,14 @@ nav {
 .landing-auth-button:hover{
     opacity: 0.4;
 }
+
+
+.row{
+    margin-left: 33px;  
+}
+.card{
+    background-color: purple;
+   
+    
+}
+
