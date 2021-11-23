@@ -15,4 +15,3 @@ class BlogIndex(ListView):
     def get_queryset(self):
         queryset = BlogEntry.objects.filter()
         return queryset
-
