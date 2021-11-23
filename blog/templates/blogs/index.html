@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Blogs</h1>
+
+{% for blog in object_list%}
+<div class = "card">
+      <h3>Blog</h3>
+      <div class = "card-content">
+          <span class = "card-title">{{blog.title}}</span>
+          <p>{{blog.blog_text}}</p>
+          <span></span>
+
+
+      </div>
+
+</div>
+
+{% endfor %}
+{% endblock %}
