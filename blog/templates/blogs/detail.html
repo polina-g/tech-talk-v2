@@ -7,14 +7,12 @@
     <div class="col s12 ">
       <div class="card blue-green darken-1 white">
           <div class = "card-action">
-              <a href="{% url 'blog_urls: blog_update' %}">Edit Blog</a>
-
+              <a href="{% url 'blog_urls:blog_update' blog.id %}">Edit Blog</a>
+              <a href="{% url 'blog_urls:blog_delete' blog.id %}">Delete Blog</a>
           </div>
         <div class="card-content black-text">
           <span class="card-title">{{blog.title}}</span>
           <div class="card-action">
-             
-
           </div>
           <p>I am a very simple card. I am good at containing small bits of information.
           I am convenient because I require little markup to use effectively.</p>
