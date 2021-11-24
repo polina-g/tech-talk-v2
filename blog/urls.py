@@ -6,5 +6,7 @@ urlpatterns = [
 path("", views.home, name = "home"),
 path("about/", views.about, name = "about"),
 path("blogs/", views.BlogIndex.as_view(), name = "index"),
-# path("blogs/<int:pk/", views.BlogDetail.as_view(), name = "detail"),
+path("blogs/create", views.BlogCreate.as_view(), name = "blog_create"),
+path("blogs/<int:pk>/", views.blogs_detail, name = "detail"),
+
 ]
