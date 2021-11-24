@@ -20,7 +20,7 @@ class BlogIndex(ListView):
 
 class BlogCreate(CreateView):
     model = BlogEntry
-    fields = ('title', 'blog_text', 'img_url')
+    fields = ('title', 'blog_text', 'image_url')
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
