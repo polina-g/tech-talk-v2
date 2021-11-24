@@ -16,7 +16,7 @@ class BlogEntry(models.Model):
 
 class Comment(models.Model):
     comment_text = models.TextField()
-    date_posted = models.DateTimeField()
+    date_posted = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=CASCADE)
     blog_entry = models.ForeignKey(BlogEntry, on_delete=CASCADE)
 
