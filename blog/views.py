@@ -40,7 +40,7 @@ def blogs_detail(request, pk):
 
 class BlogUpdate(UpdateView):
     model = BlogEntry
-    success_url = "/blogs/"
+    fields = ("title","blog_text", "image_url", "likes",  )
 
 class BlogDelete(DeleteView):
     model = BlogEntry
