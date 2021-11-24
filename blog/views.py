@@ -45,4 +45,4 @@ class BlogUpdate(UpdateView):
 
 class BlogDelete(DeleteView):
     model = BlogEntry
-    fields = ("title","blog_text", "date_posted", "image_url", "likes",  )
+    success_url = '/blogs/'
