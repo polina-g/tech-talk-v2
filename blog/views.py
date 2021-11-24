@@ -1,3 +1,4 @@
+from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView
 from .models import BlogEntry
@@ -15,3 +16,14 @@ class BlogIndex(ListView):
     def get_queryset(self):
         queryset = BlogEntry.objects.filter()
         return queryset
+
+
+def blogs_detail(request, pk):
+      blog = BlogEntry.objects.get(id = pk)
+
+      return render(
+          request,
+          "blogs/detail.html", {
+              "blog": blog
+          }
+      )
