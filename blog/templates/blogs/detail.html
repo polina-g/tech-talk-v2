@@ -11,11 +11,16 @@
               <a href="{% url 'blog_urls:blog_delete' blog.id %}">Delete Blog</a>
           </div>
       <div class="card blue-green darken-1 white purple-border z-depth-3">
-
         <div class="card-content black-text">
           <span class="card-title">{{blog.title}}</span>
           <div class="card-action">
           </div>
+
+        <div class="card-action">
+          <a class="waves-effect purple waves-light btn right" href="{% url 'blog_urls:blog_delete' blog.id %}"><i class="material-icons left">trash</i>Delete Blog</a>
+          <span class="card-title">{{blog.title}}</span>
+        </div>
+
           <p>I am a very simple card. I am good at containing small bits of information.
           I am convenient because I require little markup to use effectively.</p>
         </div>

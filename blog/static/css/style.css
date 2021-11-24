@@ -58,3 +58,12 @@ nav {
 .purple-border {
     border: 3px solid purple;
 }
+
+.delete_blog_confirm_form {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.delete_blog_confirm_container {
+    margin-top: 100px; 
+}
