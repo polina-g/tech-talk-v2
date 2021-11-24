@@ -6,4 +6,6 @@ urlpatterns = [
 path("", views.home, name = "home"),
 path("about/", views.about, name = "about"),
 path("blogs/", views.BlogIndex.as_view(), name = "index"),
+path("blogs/<int:pk>/", views.blogs_detail, name = "detail"),
+# path("blogs/<int:pk>/", views.BlogDetail.as_view(), name = "detail" ),
 ]
