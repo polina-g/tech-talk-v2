@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block main %}
 
 
@@ -10,15 +10,19 @@
 
     {% for blog in object_list%}
     <div class="col s6">
+        <a href="{% url 'blog_urls:detail' blog.id %}">
         <div class="card small darken-1 ">
-            <h3>Blog</h3>
-            <div class="card-content white-text">
+            <div class = "card-image">
+                <img src="{% static 'images/partial-logo.png' %}" alt="">
                 <span class="card-title">{{blog.title}}</span>
+            </div>
+            <div class="card-content white-text"> 
                 <p>{{blog.blog_text}}</p>
                 <span>{{blog.date_posted}}</span>
                 <p>{{blogs.likes}}</p>
             </div>
         </div>
+        </a>
     </div>
     {% endfor %}
 </div>

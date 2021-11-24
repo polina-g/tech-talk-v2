@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block main%}
+<br>
+<br>
+
+<div class="row">
+    <div class="col s12 ">
+      <div class="card blue-green darken-1 white">
+        <div class="card-content black-text">
+            <a class="waves-effect purple waves-light btn"><i class="material-icons left">trash</i>Delete Blog</a>
+          <span class="card-title">{{blog.title}}</span>
+          <div class="card-action">
+             
+
+          </div>
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <span>{{blog.likes}}</span>
+          <a class="waves-effect purple waves-light btn"><i class="material-icons left"></i>Comments</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
