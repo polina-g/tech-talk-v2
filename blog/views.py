@@ -1,5 +1,8 @@
+from django.db import models
+from django.db.models import fields
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.edit import UpdateView, DeleteView
 from .models import BlogEntry
 
 def home(request):
@@ -16,3 +19,21 @@ class BlogIndex(ListView):
         queryset = BlogEntry.objects.filter()
         return queryset
 
+
+def blogs_detail(request, pk):
+      blog = BlogEntry.objects.get(id = pk)
+
+      return render(
+          request,
+          "blogs/detail.html", {
+              "blog": blog
+          }
+      )
+
+class BlogUpdate(UpdateView):
+    model = BlogEntry
+    success_url = "/blogs/"
+
+class BlogDelete(DeleteView):
+    model = BlogEntry
+    fields = ("title","blog_text", "date_posted", "image_url", "likes",  )

@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Collector</title>
+
+    <title>Tech Talk</title>
+
     <!-- Materialize CSS -->
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -21,14 +23,15 @@
             <div class="nav-wrapper black">
                 <ul>
                     <li>
-                        <a href="{% url 'home' %}" class="left brand-logo">
+                        <a href="{% url 'blog_urls:home' %}" class="left brand-logo">
                             <img src="{% static 'images/partial-logo.png' %}" alt="Tech Talk Logo" width="80">
                         </a>
                     </li>
                 </ul>
                 <ul class="right">
-                    <li><a href="{% url 'index' %}" class="btn blue lighten-4 black-text">Blog Page</a></li>
-                    <li><a href="{% url 'about' %}" class="btn blue lighten-4 black-text">About</a></li>
+                    <li><a href="{% url 'blog_urls:index' %}" class="btn blue lighten-4 black-text">Blog Page</a></li>
+                    <li><a href="{% url 'blog_urls:about' %}" class="btn blue lighten-4 black-text">About</a></li>
+                    <li><a href="{% url 'members_urls:login' %}" class="btn blue lighten-4 black-text">Login</a></li>
                 </ul>
             </div>
         </nav>
