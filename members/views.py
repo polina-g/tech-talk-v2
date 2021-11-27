@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models import fields
 
 def login_user(request):
     if request.method == "POST":
@@ -18,6 +21,30 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+def register_user(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/blogs/')
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'authenticate/register_user.html', {})
+
+    
+    # 'form':form,
+    # })
+  
+    
+
+
+    #  successful registering message: messages.success(request, ("Registration was successful"))
 
 # Create your views here.
             # messages.success(request, ("There was an error loging in, please try again") )

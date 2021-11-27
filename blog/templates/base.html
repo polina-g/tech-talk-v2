@@ -36,7 +36,10 @@
                         <li><a href="{% url 'blog_urls:index' %}" class="btn blue lighten-4 black-text">View Posts</a></li>
 
                     {% else %}
-                        <li><a href="{% url 'members_urls:login' %}" class="btn blue lighten-4 black-text">Login</a></li>
+
+                    
+                        <li><a href="{% url 'members_urls:register_user' %}"class="btn blue lighten-4 black-text">Register</a></li>
+                         <li><a href="{% url 'members_urls:login' %}" class="btn blue lighten-4 black-text">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
