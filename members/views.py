@@ -15,6 +15,5 @@ def login_user(request):
     else:
         return render(request, 'authenticate/login.html', {})
 
-
 # Create your views here.
             # messages.success(request, ("There was an error loging in, please try again") )
