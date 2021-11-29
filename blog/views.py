@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
-
 from .models import BlogEntry
 
 def home(request):
@@ -13,7 +12,7 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-#Blog Voews:
+#Blog Views:
 class BlogIndex(ListView):
     model = BlogEntry
     template_name = "blogs/index.html"
@@ -41,8 +40,11 @@ def blogs_detail(request, pk):
 
 class BlogUpdate(UpdateView):
     model = BlogEntry
-    success_url = "/blogs/"
+    fields = ("title","blog_text", "image_url", "likes",  )
 
 class BlogDelete(DeleteView):
     model = BlogEntry
+    fields = ("title","blog_text", "date_posted", "image_url", "likes",  )
     success_url = '/blogs/'
+
+
