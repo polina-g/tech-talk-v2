@@ -1,10 +1,11 @@
 from django.db import models
 from django.db.models import fields
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import BlogEntry
+from .models import BlogEntry, Comment
+from .forms import CommentForm
 
 def home(request):
     return render(request, 'home.html')
@@ -30,11 +31,15 @@ class BlogCreate(CreateView):
 
 def blogs_detail(request, pk):
     blog = BlogEntry.objects.get(id = pk)
+    comment_form = CommentForm()
 
     return render(
       request,
       "blogs/detail.html", {
-          "blog": blog
+          "blog": blog,
+          "comment_form": comment_form
+           
+
       }
     )
 
@@ -47,4 +52,17 @@ class BlogDelete(DeleteView):
     fields = ("title","blog_text", "date_posted", "image_url", "likes",  )
     success_url = '/blogs/'
 
+def add_comment(request, pk):
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit = False)
+        new_comment.blog_entry_id = pk
+        new_comment.user = request.user
+        new_comment.save()
 
+
+    return redirect("blog_urls:detail", pk = pk)
+
+class EditComment(UpdateView):
+    model = Comment
+    fields = ("comment_text",)
