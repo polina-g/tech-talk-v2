@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container center purple-border z-depth-4 delete_blog_confirm_container">
+    <h2>Delete Comment?</h2>
+    <form action="" method="post" class="delete_blog_confirm_form">
+        {% csrf_token %}
+        <input type="submit" class="red btn-large" value="Yes, I'm sure">
+        <a href="{% url 'blog_urls:detail' object.id %}" class="btn-large purple">No, cancel!</a>
+    </form>
+</div>
+{% endblock %}
