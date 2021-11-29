@@ -25,7 +25,7 @@ class Comment(models.Model):
     blog_entry = models.ForeignKey(BlogEntry, on_delete=CASCADE)
 
     def __str__(self):
-        return f'comment {self.comment_text} by {self.user.name}'
+        return f'comment {self.comment_text} by {self.user.id}'
         
 
 
