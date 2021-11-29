@@ -26,6 +26,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'comment {self.comment_text} by {self.user.id}'
+
+    def get_absolute_url(self):
+        return reverse('blog_urls:detail', kwargs={'pk': self.blog_entry.id})
         
 
 
