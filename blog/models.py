@@ -12,6 +12,9 @@ class BlogEntry(models.Model):
     likes = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=CASCADE)
 
+    def total_likes(self):
+        return self.likes.count()
+
     def __str__(self):
         return f'{self.title}'
 
@@ -19,15 +22,12 @@ class BlogEntry(models.Model):
         return reverse('blog_urls:index')
 
 class Comment(models.Model):
-    comment_text = models.TextField()
-    date_posted = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=CASCADE)
-    blog_entry = models.ForeignKey(BlogEntry, on_delete=CASCADE)
+    # foreign key connects comment model with post model related_name allows to grab it as "comment", automatically adds date to post without person adding it manually 
+    blogentry = models.ForeignKey(BlogEntry, related_name="comments", on_delete=models.CASCADE)
+    username = models.CharField(max_length=255)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'comment {self.comment_text} by {self.user.name}'
-        
-
-
-
+        return '%s - %s' % (self.blogentry.title, self.username)
 

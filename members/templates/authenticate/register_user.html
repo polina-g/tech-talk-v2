@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<p> There was an error with your form.. </p>
+
+
+<h1>Register</h1>
+<br/>
+<form action="{% url 'members_urls:register_user' %}" method=POST>
+  {% csrf_token %}
+  {{form.as_p}}
+  
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
