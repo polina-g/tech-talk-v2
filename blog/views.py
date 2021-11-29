@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import fields
+from django.http import request
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
@@ -66,3 +67,12 @@ def add_comment(request, pk):
 class EditComment(UpdateView):
     model = Comment
     fields = ("comment_text",)
+
+class DeleteComment(DeleteView):
+    model = Comment
+    def get_success_url(self):
+        blog_id = self.kwargs.get('blog_id')
+        return f'/blogs/{blog_id}'
+
+    
+    

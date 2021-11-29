@@ -44,6 +44,7 @@
     </div>
     <div class = "card-action">
         <a href="{% url 'blog_urls:edit_comment' comment.id %}">Edit Comment</a>
+        <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}">Delete</a>
     </div>
 </div>
 
