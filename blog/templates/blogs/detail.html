@@ -31,5 +31,13 @@
         </div>
     </div>
 </div>
+{% for comment in blog.comment_set.all %}
+<div class = "card">
+    <div class = "card-content">
+       {{ comment.comment_text }}
+    </div>
+</div>
+
+{% endfor %}
 
 {% endblock %}
