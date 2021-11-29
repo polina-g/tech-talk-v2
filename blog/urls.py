@@ -11,5 +11,6 @@ path("blogs/<int:pk>/", views.blogs_detail, name = "detail"),
 path("blogs/<int:pk>/update/", views.BlogUpdate.as_view(), name = "blog_update"),
 path("blogs/<int:pk>/delete", views.BlogDelete.as_view(), name = "blog_delete"),
 path("blogs/<int:pk>/add_comment/", views.add_comment, name = "add_comment"),
+path("blogs/<int:pk/edit_comment/", views.EditComment.as_view(),  name = "edit_comment"),
 
 ]
