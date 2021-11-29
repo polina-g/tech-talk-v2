@@ -31,11 +31,15 @@ class BlogCreate(CreateView):
 
 def blogs_detail(request, pk):
     blog = BlogEntry.objects.get(id = pk)
+    comment_form = CommentForm()
 
     return render(
       request,
       "blogs/detail.html", {
-          "blog": blog
+          "blog": blog,
+          "comment_form": comment_form
+           
+
       }
     )
 
@@ -52,10 +56,11 @@ def add_comment(request, pk):
     form = CommentForm(request.POST)
     if form.is_valid():
         new_comment = form.save(commit = False)
-        new_comment.blog_entry = pk
+        new_comment.blog_entry_id = pk
         new_comment.user = request.user
         new_comment.save()
 
-    return redirect("detail", pk = pk)
+
+    return redirect("blog_urls:detail", pk = pk)
 
 
