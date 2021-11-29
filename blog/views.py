@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import BlogEntry
+from .models import BlogEntry, Comment
 from .forms import CommentForm
 
 def home(request):
@@ -63,4 +63,6 @@ def add_comment(request, pk):
 
     return redirect("blog_urls:detail", pk = pk)
 
-
+class EditComment(UpdateView):
+    model = Comment
+    fields = ("comment_text",)
