@@ -39,10 +39,13 @@ def register_user(request):
     
     return render(request, 'authenticate/register_user.html', {'form': form})
 
-class UserEditView(generic.CreateView):
+class UserEditView(generic.UpdateView):
     form_class = UserChangeForm
     template_name = 'authenticate/edit_profile.html'
     sucess_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user
 
     
     # 'form':form,
