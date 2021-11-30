@@ -4,7 +4,7 @@
 <h1>Edit Profile</h1>
 <br/>
 <br/>
-{{ user.profile.bio }}
+
 <br/>
 <br/>
 
@@ -12,8 +12,6 @@
     <form method=POST>
   {% csrf_token %}
   {{form.as_p}}
-  
-
   <button type="submit" class="btn btn-primary">Update Profile</button>
 </form>
 </div>

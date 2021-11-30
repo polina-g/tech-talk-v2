@@ -1,47 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ user.username}} | Tech Talk</title>
+{% extends 'base.html' %}
+
+{% block main %}
+    <title>{{ user.username }} | Tech Talk</title>
 </head>
 <body>
-
-
-<!-- alba making edits -->
-
-<div class="col-md-10">
-    <img src=" {{ user.profile.profile_background_pic }}" width=100% height=200>
+ 
+    <div class="col-md-10">
+        <img src=" {{ user.profile.profile_background_pic }}" width=100% height=200>
   
-    <div class="card-body">
-        <img src=" {{ user.profile.profile_pic }}" width=200 height=200 style="border-radius: 50%">
-        <h1>{{ user.username}} </h1>
-        <h5 class="card-title">
+            <div class="card-body">
+                <img src=" {{ user.profile.profile_pic }}" width=200 height=200 style="border-radius: 50%">
+                    <h1>{{ user.username}} </h1>
+                    <h5 class="card-title">
    
-            <p class="card-text">
-                <h5>{{ user.profile.bio}} </h5>
-                <p class="text-muted">
+                    <p class="card-text">
+                    <h5>{{ user.profile.bio}} </h5>
+                    <br/>
+        
+                    <p class="text-muted">
                     {% if user.profile.website_url %}
-                    <a href="{{ user.profile.website_url }}" target="_blank"> Website</a>
+                        <a href="{{ user.profile.website_url }}" target="_blank"> Website</a>
                     {% endif %}
                     {% if user.profile.linkedin_url %}
-                    <a href="{{ user.profile.linkedin_url }}"target="_blank"> LinkedIn</a>
+                        <a href="{{ user.profile.linkedin_url }}"target="_blank"> LinkedIn</a>
                     {% endif %}
                     {% if user.profile.twitter_url %}
-                    <a href="{{ user.profile.twitter_url }}"target="_blank"> Twitter</a>
+                        <a href="{{ user.profile.twitter_url }}"target="_blank"> Twitter</a>
                     {% endif %}
                     {% if user.profile.youtube_url %}
-                    <a href="{{ user.profile.youtube_url }}"target="_blank"> Youtube</a>
+                        <a href="{{ user.profile.youtube_url }}"target="_blank"> Youtube</a>
                     {% endif %} 
                   </p>
             </p>
         </h5>
     </div>
 </div>
+<br/>
+<br/>
 
-
-<!-- 
-alba making edits end -->
+<a href="{% url 'members_urls:edit_profile' %}" class="btn blue lighten-4 black-text">Edit My Profile</a>
 </body>
 </html>
+{% endblock %}

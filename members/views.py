@@ -2,11 +2,13 @@ from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import fields
-from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic.detail import DetailView
+from django.views.generic import DetailView
+
+
 
 def success(request):
     return render('authenticate/success.html')
@@ -54,19 +56,4 @@ class UserEditView(generic.UpdateView):
     def get_object(self):
         return self.request.user
 
-
-
-    
-    # 'form':form,
-    # })
   
-    
-
-
-    #  successful registering message: messages.success(request, ("Registration was successful"))
-
-# Create your views here.
-            # messages.success(request, ("There was an error loging in, please try again") )
-
-
-            #this is the logout button  messages.success(request, ("You were successfully logged out!") )
