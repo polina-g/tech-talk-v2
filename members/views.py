@@ -9,7 +9,10 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 def success(request):
-    return redirect('success.html')
+    return render('authenticate/success.html')
+
+def profile(request):
+    return render(request, 'authenticate/profile.html')
 
 def login_user(request):
     if request.method == "POST":
