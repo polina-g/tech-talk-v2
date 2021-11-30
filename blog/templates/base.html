@@ -32,8 +32,8 @@
                     </li>
                     <li><a href="{% url 'blog_urls:about' %}" class="btn light-blue accent-1 black-text" style="margin-left: 90px;">About Us</a></li>
                 </ul>
-                <ul class="center_nav_links">
-                    {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
+                <ul class="center_nav_links">     
                     <li><a href="{% url 'blog_urls:blog_create' %}" class="light-blue accent-1 btn lighten-4 black-text">Add Post</a></li>
                     <li><a href="{% url 'blog_urls:index' %}" class="light-blue accent-1 btn lighten-4 black-text">View Posts</a></li>
                     <li><a href="{% url 'blog_urls:explore' %}" class="light-blue accent-1 btn lighten-4 black-text">Explore</a></li>
@@ -43,8 +43,9 @@
                     <li><a href="{% url 'logout' %}" class="btn light-blue accent-1 black-text">Logout</a></li>
                 
                     {% else %}
-                        <li><a href="{% url 'members_urls:register_user' %}"class="btn blue lighten-4 black-text">Register</a></li>
-                         <li><a href="{% url 'members_urls:login' %}" class="btn blue lighten-4 black-text">Login</a></li>
+                    <ul class="right">
+                        <li><a href="{% url 'members_urls:register_user' %}"class="btn light-blue accent-1 black-text">Register</a></li>
+                         <li><a href="{% url 'members_urls:login' %}" class="btn light-blue accent-1 black-text">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
