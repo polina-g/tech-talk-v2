@@ -71,3 +71,7 @@ nav {
 .hidden {
     display: none;
 }
+
+.center_nav_links {
+    margin-left: 35%;
+}
