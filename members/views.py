@@ -1,3 +1,4 @@
+from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -51,6 +52,8 @@ class UserEditView(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+
+
 
     
     # 'form':form,
