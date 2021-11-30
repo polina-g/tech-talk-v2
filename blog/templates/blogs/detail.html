@@ -31,6 +31,7 @@
         </div>
     </div>
 </div>
+
 <form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
         {% csrf_token %}
         {{ comment_form.as_p }}
@@ -38,6 +39,10 @@
 
 </form>
 {% for comment in blog.comment_set.all %}
+
+<br/>
+<br/>
+
 <div class = "card">
     <div class = "card-content">
        {{ comment.comment_text }}

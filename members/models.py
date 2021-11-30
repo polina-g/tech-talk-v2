@@ -6,7 +6,7 @@ from django.db.models.deletion import CASCADE
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete= models.CASCADE)
     bio = models.TextField()
-    profile_pic = models.ImageField(null=True, blank=True, upload_to="profile/")
+    profile_pic = models.CharField(max_length=255, null=True, blank=True)
     website_url = models.CharField(max_length=255, null=True, blank=True)
     youtube_url = models.CharField(max_length=255, null=True, blank=True)
     github_url = models.CharField(max_length=255, null=True, blank=True)
@@ -14,6 +14,6 @@ class Profile(models.Model):
     twitter_url = models.CharField(max_length=255, null=True, blank=True)
     
 
-
+ 
     def __str__(self):
         return str(self.user)
