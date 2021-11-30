@@ -4,6 +4,11 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import BlogEntry, Comment
 from .forms import CommentForm
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'tech-talk-123456'
 
 def home(request):
     return render(request, 'home.html')
@@ -22,10 +27,25 @@ class BlogIndex(ListView):
       
 class BlogCreate(CreateView):
     model = BlogEntry
-    fields = ('title', 'blog_text', 'image_url')
+    fields = ('title', 'blog_text')
     def form_valid(self, form):
+        # Current user added as the blog user
         form.instance.user = self.request.user
+        # Handle photo uploaed
+        photo_file = self.request.FILES.get('photo-file')
+        if photo_file:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f'{S3_BASE_URL}{BUCKET}/{key}'
+            form.instance.image_url = url
+        except Exception as error:
+            print(f'an error occured uploading to AWS S3 ')
+            print(error)
         return super().form_valid(form)
+
+
 
 def blogs_detail(request, pk):
     blog = BlogEntry.objects.get(id = pk)
@@ -39,6 +59,7 @@ def blogs_detail(request, pk):
           "author_id": blog.user.id,
       }
     )
+
 
 class BlogUpdate(UpdateView):
     model = BlogEntry
