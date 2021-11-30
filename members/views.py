@@ -7,6 +7,9 @@ from django.db.models import fields
 from django.urls import reverse_lazy
 from django.views import generic
 
+def success(request):
+    return redirect('success.html')
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -42,7 +45,9 @@ def register_user(request):
 class UserEditView(generic.UpdateView):
     form_class = UserChangeForm
     template_name = 'authenticate/edit_profile.html'
-    sucess_url = reverse_lazy('home')
+    success_url = ('/blogs/')
+
+
 
     def get_object(self):
         return self.request.user
