@@ -2,29 +2,29 @@
 {% load static %}
 {% block main %}
 
-
-<div class="row">
-    <div class="col s12">
-        <h1>What's Happening Today?</h1>
-    </div>
-
-    {% for blog in object_list%}
-    <div class="col s6">
-        <a href="{% url 'blog_urls:detail' blog.id %}">
-        <div class="card small darken-1 ">
-            <div class = "card-image">
-                <img src="{% static 'images/partial-logo.png' %}" alt="">
-                <span class="card-title black-text">{{blog.title}}</span>
-            </div>
-            <div class="card-content"> 
-                <p>{{blog.blog_text}}</p>
-                <span>{{blog.date_posted}}</span>
-                <p>{{blogs.likes}}</p>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1 class="center" >What's Happening?</h1>
         </div>
-        </a>
+
+        {% for blog in object_list%}
+        <div class="col s6">
+            <a href="{% url 'blog_urls:detail' blog.id %}">
+                <div class="card large darken-1 ">
+                    <div class = "card-image">
+                        <img src="{{blog.image_url}}" alt="" class="responsive-img"">
+                    </div>
+                    <div class="card-content"> 
+                        <h4> {{blog.title}} </h4>
+                        <h5>{{ blog.user.username }}</h5>
+                        <span>{{blog.date_posted}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
 {% endblock %}
