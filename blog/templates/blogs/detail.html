@@ -31,6 +31,24 @@
         </div>
     </div>
 </div>
+<form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" value = "Add a Comment" class = "btn purple">
+
+</form>
+{% for comment in blog.comment_set.all %}
+<div class = "card">
+    <div class = "card-content">
+       {{ comment.comment_text }}
+    </div>
+    <div class = "card-action">
+        <a href="{% url 'blog_urls:edit_comment' comment.id %}">Edit Comment</a>
+        <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}">Delete</a>
+    </div>
+</div>
+
+{% endfor %}
 
 <div id="disqus_thread"></div>
 <script>
