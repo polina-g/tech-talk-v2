@@ -48,8 +48,6 @@ class UserEditView(generic.UpdateView):
     template_name = 'authenticate/edit_profile.html'
     success_url = ('/blogs/')
 
-
-
     def get_object(self):
         return self.request.user
 
