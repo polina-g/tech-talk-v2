@@ -30,14 +30,13 @@ class BlogCreate(CreateView):
 def blogs_detail(request, pk):
     blog = BlogEntry.objects.get(id = pk)
     comment_form = CommentForm()
-
     return render(
       request,
       "blogs/detail.html", {
           "blog": blog,
-          "comment_form": comment_form
-           
-
+          "comment_form": comment_form,
+          "user_id": request.user.id,
+          "author_id": blog.user.id,
       }
     )
 
