@@ -1,6 +1,3 @@
-from django.db import models
-from django.db.models import fields
-from django.http import request
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
@@ -20,7 +17,7 @@ class BlogIndex(ListView):
     template_name = "blogs/index.html"
 
     def get_queryset(self):
-        queryset = BlogEntry.objects.filter()
+        queryset = BlogEntry.objects.filter(user = self.request.user)
         return queryset
       
 class BlogCreate(CreateView):
@@ -75,4 +72,9 @@ class DeleteComment(DeleteView):
         return f'/blogs/{blog_id}'
 
     
-    
+class Explore (ListView):
+    model = BlogEntry
+    template_name = 'blogs/explore.html'
+    def get_queryset(self):
+        queryset = BlogEntry.objects.exclude(user = self.request.user)
+        return queryset
