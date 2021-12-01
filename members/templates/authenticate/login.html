@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block main %}
+<br/>
+<center>
 <h1>Login</h1>
-
+</center>
+<center>
 <form action="" method=POST>
     {% csrf_token %}
     <form>
@@ -30,4 +33,5 @@
 
     
 </form>
+</center>
 {% endblock %}
