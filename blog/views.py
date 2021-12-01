@@ -63,7 +63,21 @@ def blogs_detail(request, pk):
 
 class BlogUpdate(UpdateView):
     model = BlogEntry
-    fields = ("title","blog_text", "image_url", "likes",  )
+    fields = ("title","blog_text", "image_url", )
+    def form_valid(self, form):
+        # Handle photo uploaed
+        photo_file = self.request.FILES.get('photo-file')
+        if photo_file:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f'{S3_BASE_URL}{BUCKET}/{key}'
+            form.instance.image_url = url
+        except Exception as error:
+            print(f'an error occured uploading to AWS S3 ')
+            print(error)
+        return super().form_valid(form)
 
 class BlogDelete(DeleteView):
     model = BlogEntry
