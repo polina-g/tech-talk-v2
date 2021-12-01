@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 <<<<<<< HEAD
+<<<<<<< HEAD
 {% load static %}
 {% block main %}
 <br>
@@ -20,6 +21,8 @@
                         Blog</a>
                     
 =======
+=======
+>>>>>>> 047a70f45b117d43f0e1ac915913a6fc1b6cb869
 {% block main%}
 <div class="container">
     <h1 class="center">{{ blog.title }}</h1>
@@ -50,7 +53,7 @@
                         <span class="card-title">{{blog.title}}</span>
                         <p>{{ blog.blog_text }}</p>
                     </div>   
->>>>>>> 33fcc9432e68489de61a25987fcd27511ed18072
+
                 </div>
                 <div class="card-action">
 
@@ -96,12 +99,19 @@
             {{ comment_form.as_p }}
             <input type="submit" value = "Add a Comment" class = "btn purple">
 =======
+=======
+                </div>
+                <div class="card-action">
+>>>>>>> 047a70f45b117d43f0e1ac915913a6fc1b6cb869
                     <a class="waves-effect purple waves-light btn comment_button"><i class="material-icons left"></i>Comments</a>
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 >>>>>>> 33fcc9432e68489de61a25987fcd27511ed18072
+=======
+>>>>>>> 047a70f45b117d43f0e1ac915913a6fc1b6cb869
     
     <div class="comment_section hidden">
         <form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
@@ -128,10 +138,14 @@
             {% endif %}
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 841961c5fd7150cc9f9693d631bc1a957209bc1f
 =======
         {% endfor %}
 >>>>>>> 33fcc9432e68489de61a25987fcd27511ed18072
+=======
+        {% endfor %}
+>>>>>>> 047a70f45b117d43f0e1ac915913a6fc1b6cb869
     </div>
     
     <div id="disqus_thread"></div>
@@ -170,5 +184,4 @@
     );
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endfor %}
 {% endblock %}

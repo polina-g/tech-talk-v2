@@ -40,6 +40,7 @@
                 </ul>
                 <ul class="right">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <li><a href="{% url 'blog_urls:about' %}" class="btn blue lighten-4 black-text">About Us</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}" class="btn blue lighten-4 black-text">Logout</a></li>
@@ -54,6 +55,10 @@
                     <li><a href="{% url 'logout' %}" class="btn light-blue accent-1 black-text">Logout</a></li>
                 
 >>>>>>> 33fcc9432e68489de61a25987fcd27511ed18072
+=======
+                    <li><a href="{% url 'members_urls:profile' %}" class="btn blue lighten-4 black-text">View My Profile</a></li>
+                    <li><a href="{% url 'logout' %}" class="btn blue lighten-4 black-text">Logout</a></li>
+>>>>>>> 047a70f45b117d43f0e1ac915913a6fc1b6cb869
                     {% else %}
                     <ul class="right">
                         <li><a href="{% url 'members_urls:register_user' %}"class="btn light-blue accent-1 black-text">Register</a></li>
