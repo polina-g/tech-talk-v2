@@ -10,6 +10,7 @@ from django.views.generic import DetailView
 from members.models import Profile
 from .models import User
 
+
 class ShowProfilePageView(DetailView):
     model = Profile
     template_name = 'authenticate/user_profile.html'
