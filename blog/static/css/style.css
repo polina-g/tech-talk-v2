@@ -83,3 +83,7 @@ nav {
 .header-text-no-margin {
     margin-top: 0; 
 }
+
+textarea {
+    height: 500px; 
+}
