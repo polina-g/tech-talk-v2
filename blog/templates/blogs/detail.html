@@ -54,10 +54,12 @@
                 </p>
                 
             </div>
+            {% if comment.user.id == user.id %}
             <div class = "card-action">
                 <a href="{% url 'blog_urls:edit_comment' comment.id %}" class="purple-text">Edit Comment</a>
                 <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}" class="purple-text">Delete</a>
             </div>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
