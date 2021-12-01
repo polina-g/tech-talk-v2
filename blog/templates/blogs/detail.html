@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block main%}
+{% load static %}
+{% block main %}
 <br>
 <br>
 
@@ -24,6 +25,8 @@
                     <span class="card-title">{{blog.title}}</span>
                     <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
+
+                     
                 </div>   
             </div>
             <div class="card-action">
@@ -33,6 +36,27 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+
+<form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" value = "Add a Comment" class = "btn purple">
+
+</form>
+{% for comment in blog.comment_set.all %}
+
+<br/>
+<br/>
+
+<div class = "card">
+    <div class = "card-content">
+       {{ comment.comment_text }}
+    </div>
+    <div class = "card-action">
+        <a href="{% url 'blog_urls:edit_comment' comment.id %}">Edit Comment</a>
+        <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}">Delete</a>
+=======
 
 <div class="comment_section hidden">
     <form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
@@ -50,6 +74,7 @@
             <a href="{% url 'blog_urls:edit_comment' comment.id %}">Edit Comment</a>
             <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}">Delete</a>
         </div>
+>>>>>>> 841961c5fd7150cc9f9693d631bc1a957209bc1f
     </div>
 </div>
 
@@ -90,4 +115,5 @@
     );
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endfor %}
 {% endblock %}
