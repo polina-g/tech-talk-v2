@@ -12,34 +12,40 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Local CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper black">
-                <ul>
+                <ul class="left">
                     <li>
                         <a href="{% url 'blog_urls:home' %}" class="left brand-logo">
                             <img src="{% static 'images/partial-logo.png' %}" alt="Tech Talk Logo" width="80">
                         </a>
                     </li>
+                    <li><a href="{% url 'blog_urls:about' %}" class="btn light-blue accent-1 black-text" style="margin-left: 90px;">About Us</a></li>
+                </ul>
+                {% if user.is_authenticated %}
+                <ul class="center_nav_links">     
+                    <li><a href="{% url 'blog_urls:blog_create' %}" class="light-blue accent-1 btn lighten-4 black-text">Add Post</a></li>
+                    <li><a href="{% url 'blog_urls:index' %}" class="light-blue accent-1 btn lighten-4 black-text">View Posts</a></li>
+                    <li><a href="{% url 'blog_urls:explore' %}" class="light-blue accent-1 btn lighten-4 black-text">Explore</a></li>
                 </ul>
                 <ul class="right">
-                    <li><a href="{% url 'blog_urls:about' %}" class="btn blue lighten-4 black-text">About Us</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}" class="btn blue lighten-4 black-text">Logout</a></li>
-                        <li><a href="{% url 'blog_urls:blog_create' %}" class="btn blue lighten-4 black-text">Add Post</a></li>
-                        <li><a href="{% url 'blog_urls:index' %}" class="btn blue lighten-4 black-text">View Posts</a></li>
-
+                    <li><a href="{% url 'members_urls:edit_profile' %}" class="btn light-blue accent-1 black-text">Edit Profile</a></li>
+                    <li><a href="{% url 'logout' %}" class="btn light-blue accent-1 black-text">Logout</a></li>
+                
                     {% else %}
-
-                    
-                        <li><a href="{% url 'members_urls:register_user' %}"class="btn blue lighten-4 black-text">Register</a></li>
-                         <li><a href="{% url 'members_urls:login' %}" class="btn blue lighten-4 black-text">Login</a></li>
+                    <ul class="right">
+                        <li><a href="{% url 'members_urls:register_user' %}"class="btn light-blue accent-1 black-text">Register</a></li>
+                         <li><a href="{% url 'members_urls:login' %}" class="btn light-blue accent-1 black-text">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -50,6 +56,33 @@
         {% endblock %}
     </main>
     <footer class="page-footer black">
+        <a href="https://www.linkedin.com/" 
+        target="_blank" 
+        class="btn-floating btn-small pulse">
+        <img src="https://www.freepnglogos.com/uploads/linkedin-basic-round-social-logo-png-13.png" 
+        alt="code" 
+        style="width:100%;height:100%"
+        target="_blank"
+        class="circle">
+       </a>
+       <a href="https://github.com/polina-g/tech-talk/" 
+       target="_blank" 
+       class="btn-floating btn-small pulse">
+       <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
+       alt="code" 
+       style="width:100%;height:100%"
+       target="_blank"
+       class="circle">
+      </a>
+      <a href="https://twitter.com" 
+      target="_blank" 
+      class="btn-floating btn-small pulse">
+      <img src="https://about.twitter.com/content/dam/about-twitter/en/brand-toolkit/brand-download-img-1.jpg.twimg.1920.jpg" 
+      alt="code" 
+      style="width:100%;height:100%"
+      target="_blank"
+      class="circle">
+     </a>
         <div class="center">
             All Rights Reserved, &copy: 2021 Tech Talk
         </div>

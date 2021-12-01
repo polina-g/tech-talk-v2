@@ -50,7 +50,7 @@ nav {
 
 
 
-.card{
+.purple-card{
     background-color: purple;
    
 } 
@@ -66,4 +66,20 @@ nav {
 
 .delete_blog_confirm_container {
     margin-top: 100px; 
+}
+
+.hidden {
+    display: none;
+}
+
+.center_nav_links {
+    margin-left: 35%;
+}
+
+.header-text{
+    margin-top: 50px;
+}
+
+.header-text-no-margin {
+    margin-top: 0; 
 }

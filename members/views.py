@@ -1,9 +1,15 @@
+from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import fields
+from django.urls import reverse_lazy
+from django.views import generic
+
+def success(request):
+    return redirect('success.html')
 
 def login_user(request):
     if request.method == "POST":
@@ -36,6 +42,16 @@ def register_user(request):
         form = UserCreationForm()
     
     return render(request, 'authenticate/register_user.html', {'form': form})
+
+class UserEditView(generic.UpdateView):
+    form_class = UserChangeForm
+    template_name = 'authenticate/edit_profile.html'
+    success_url = ('/blogs/')
+
+    def get_object(self):
+        return self.request.user
+
+
 
     
     # 'form':form,
