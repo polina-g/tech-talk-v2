@@ -1,21 +1,57 @@
+
 {% extends 'base.html' %}
 
 {% block main %}
-
-
-
-
-<h1>Edit Profile</h1>
 <br/>
+<center>
+<h5>Edit Profile</h5>
+</center>
 <br/>
+<hr/>
+<br/>
+<center>
+<form class="validate"method=POST>
 
-<div>
-    <form method=POST>
-  {% csrf_token %}
-  {{form.as_p}}
+
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <tr>
+            <th><label for="id_bio">bio</label></th>
+            <td><input type="text"></td>
+      </tr>
+      <tr>
+            <th><label for="id_profile_pic">Profile Picture</label></th>
+            <td><input type="url"></td>
+      </tr>
+      <tr>
+            <th><label for="id_profile_background_pic">Background Picture</label></th>
+            <td><input type="url"></td>
+      </tr>
+      <tr>
+            <th><label for="id_website_url">Website URL </label></th>
+            <td><input type="url"></td>
+      </tr>
+      <tr>
+            <th><label for="id_youtube_url">Youtube URL </label></th>
+            <td><input type="url"></td>
+      </tr>  <tr>
+            <th><label for="id_github_url">Github URL </label></th>
+            <td><input type="url"></td>
+      </tr>  <tr>
+            <th><label for="id_linkedin_url">LinkedIn URL </label></th>
+            <td><input type="url"></td>
+      </tr>  <tr>
+            <th><label for="id_twitter_url">Twitter URL </label></th>
+            <td><input type="url"></td>
+      </tr>
+      <button type="submit" class="btn btn-primary"onclick="M.toast({html: 'Your profile has been updated'})">Update Profile</button>  
+</center>
   
 
-  <button type="submit" class="btn btn-primary">Update Profile</button>
+
+
 </form>
-</div>
+
+
 {% endblock %}
