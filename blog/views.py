@@ -19,7 +19,8 @@ def about(request):
     return render(request, 'about.html')
 
 #Blog Views:
-class BlogIndex(ListView):
+
+class BlogIndex(LoginRequiredMixin, ListView):
     model = BlogEntry
     template_name = "blogs/index.html"
 
@@ -27,7 +28,7 @@ class BlogIndex(ListView):
         queryset = BlogEntry.objects.filter(user = self.request.user)
         return queryset
       
-class BlogCreate(CreateView):
+class BlogCreate(LoginRequiredMixin, CreateView):
     model = BlogEntry
     fields = ('title', 'blog_text')
     def form_valid(self, form):
@@ -48,7 +49,7 @@ class BlogCreate(CreateView):
         return super().form_valid(form)
 
 
-
+@login_required
 def blogs_detail(request, pk):
     blog = BlogEntry.objects.get(id = pk)
     comment_form = CommentForm()
@@ -63,7 +64,7 @@ def blogs_detail(request, pk):
     )
 
 
-class BlogUpdate(UpdateView):
+class BlogUpdate(LoginRequiredMixin, UpdateView):
     model = BlogEntry
     fields = ("title","blog_text", "image_url", )
     def form_valid(self, form):
@@ -81,7 +82,7 @@ class BlogUpdate(UpdateView):
             print(error)
         return super().form_valid(form)
 
-class BlogDelete(DeleteView):
+class BlogDelete(LoginRequiredMixin, DeleteView):
     model = BlogEntry
     fields = ("title","blog_text", "date_posted", "image_url", "likes",  )
     success_url = '/blogs/'
@@ -97,18 +98,18 @@ def add_comment(request, pk):
 
     return redirect("blog_urls:detail", pk = pk)
 
-class EditComment(UpdateView):
+class EditComment(LoginRequiredMixin, UpdateView):
     model = Comment
     fields = ("comment_text",)
 
-class DeleteComment(DeleteView):
+class DeleteComment(LoginRequiredMixin, DeleteView):
     model = Comment
     def get_success_url(self):
         blog_id = self.kwargs.get('blog_id')
         return f'/blogs/{blog_id}'
 
     
-class Explore (ListView):
+class Explore (LoginRequiredMixin, ListView):
     model = BlogEntry
     template_name = 'blogs/explore.html'
     def get_queryset(self):
