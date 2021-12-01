@@ -25,6 +25,9 @@ class ShowProfilePageView(DetailView):
 def success(request):
     return render('authenticate/success.html')
 
+def profile(request):
+    return render(request, 'authenticate/profile.html')
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']

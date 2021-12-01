@@ -36,6 +36,8 @@
                         <li><a href="{% url 'logout' %}" class="btn blue lighten-4 black-text">Logout</a></li>
                         <li><a href="{% url 'blog_urls:blog_create' %}" class="btn blue lighten-4 black-text">Add Post</a></li>
                         <li><a href="{% url 'blog_urls:index' %}" class="btn blue lighten-4 black-text">View Posts</a></li>
+                        <li><a href="{% url 'members_urls:edit_profile' %}" class="btn blue lighten-4 black-text">Edit Profile</a></li>
+                        <li><a href="{% url 'members_urls:profile' %}" class="btn blue lighten-4 black-text">View My Profile</a></li>
                      
                         <li><a href="{% url 'blog_urls:explore' %}" class="btn blue lighten-4 black-text">Explore</a></li>
                     {% else %}
