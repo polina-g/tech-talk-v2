@@ -50,7 +50,7 @@ nav {
 
 
 
-.card{
+.purple-card{
     background-color: purple;
    
 } 
@@ -70,4 +70,20 @@ nav {
 
 .hidden {
     display: none;
+}
+
+.center_nav_links {
+    margin-left: 35%;
+}
+
+.header-text{
+    margin-top: 50px;
+}
+
+.header-text-no-margin {
+    margin-top: 0; 
+}
+
+textarea {
+    height: 500px; 
 }
