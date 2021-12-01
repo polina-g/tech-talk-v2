@@ -29,9 +29,10 @@
                         <p> 
                             <a href="{% url 'members_urls:show_profile_page' blog.user.profile.id %}">Profile Page</a>
 
+                            {% if blog.user.profile.website_url %}
 
-
-                            <a href="{{ user.profile.website_url }}" target="_blank"> Author Profile Page</a>
+                            <a href="{{ blog.user.profile.website_url }}" target="_blank"> | Website </a>
+                            {% endif %}
                         </p>
                 </div>   
             </div>
