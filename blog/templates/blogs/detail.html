@@ -25,7 +25,14 @@
                     <span class="card-title">{{blog.title}}</span>
                     <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
-                        <p> Author: {{ blog.user }}</p>
+
+                        <p> 
+                            <a href="{% url 'members_urls:show_profile_page' blog.user.profile.id %}">Profile Page</a>
+
+
+
+                            <a href="{{ user.profile.website_url }}" target="_blank"> Author Profile Page</a>
+                        </p>
                 </div>   
             </div>
             <div class="card-action">
