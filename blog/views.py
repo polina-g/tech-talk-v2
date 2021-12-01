@@ -5,6 +5,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from .models import BlogEntry, Comment
 from .forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 import uuid
 import boto3
 
