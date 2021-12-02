@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
 {% block main %}
-
-<p> There was an error with your form.. </p>
-
-
-<h1>Sign Up!</h1>
-<br/>
-<form action="{% url 'members_urls:register_user' %}" method=POST>
-  {% csrf_token %}
-  {{form.as_p}}
+<div class="container">
+  <p> There was an error with your form.. </p>
   
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  
+  <h1 class="center">Sign Up!</h1>
+  <br/>
+  <form action="{% url 'members_urls:register_user' %}" method=POST>
+    {% csrf_token %}
+    {{form.as_p}}
+    
+  
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 {% endblock %}
 
 
