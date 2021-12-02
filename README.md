@@ -21,4 +21,8 @@
 ![edit-profile](https://i.imgur.com/pDtbPCz.png)
 ![edit-password](https://i.imgur.com/C0mXsXy.png)
 
+<a href="https://docs.google.com/presentation/d/1XiRo40gLLzh22XKiNHGCbk_bW2OktTSn0pbl3OfotR4/edit#slide=id.g10333c1fd09_0_47" target="_blank">Pitch deck</a>
+<a href="https://tech-talk-pak.herokuapp.com/" target="_blank"> Deployed link </a>
+
+
 
