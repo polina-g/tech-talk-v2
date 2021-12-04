@@ -23,28 +23,29 @@
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper nav-styling valign-wrapper">
+            <div class="nav-wrapper nav-styling valign-wrapper blue darken-4
+            ">
                 <ul class="nav-left">
                     <li>
                         <a href="{% url 'blog_urls:home' %}" class="left brand-logo">
                             <img src="{% static 'images/partial-logo.png' %}" alt="Tech Talk Logo" width="80">
                         </a>
                     </li>
-                    <li><a href="{% url 'blog_urls:about' %}" class="white-text" style="margin-left: 90px;">About Us</a></li>
+                    <li><a href="{% url 'blog_urls:about' %}" class="waves-effect white-text" style="margin-left: 90px;">About Us</a></li>
                 </ul>
                 {% if user.is_authenticated %}
                 <ul class="hide-on-med-and-down">      
-                    <li><a href="{% url 'blog_urls:blog_create' %}" class="white-text ">Add Post</a></li>
-                    <li class="active"><a href="{% url 'blog_urls:index' %}" class="white-text">My Posts</a></li>
-                    <li><a href="{% url 'blog_urls:explore' %}" class="white-text">Explore</a></li>
+                    <li id="add_post"><a href="{% url 'blog_urls:blog_create' %}" class="waves-effect white-text ">Add Post</a></li>
+                    <li id="my_post"><a href="{% url 'blog_urls:index' %}" class="waves-effect white-text">My Posts</a></li>
+                    <li id="explore"><a href="{% url 'blog_urls:explore' %}" class="waves-effect white-text">Explore</a></li>
                 </ul>
                 <ul class="hide-on-med-and-down">
-                    <li><a href="{% url 'members_urls:profile' %}" class="white-text">View My Profile</a></li>
-                    <li><a href="{% url 'logout' %}" class="white-text">Logout</a></li>
+                    <li><a href="{% url 'members_urls:profile' %}" class="waves-effect white-text">View My Profile</a></li>
+                    <li><a href="{% url 'logout' %}" class="waves-effect white-text">Logout</a></li>
                     {% else %}
                     <ul class="hide-on-med-and-down">
-                        <li><a href="{% url 'members_urls:register_user' %}" class="white-text">Register</a></li>
-                         <li><a href="{% url 'members_urls:login' %}" class="white-text">Login</a></li>
+                        <li><a href="{% url 'members_urls:register_user' %}" class="waves-effect white-text">Register</a></li>
+                         <li><a href="{% url 'members_urls:login' %}" class="waves-effect white-text">Login</a></li>
                     {% endif %}
                 </ul>
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -52,16 +53,16 @@
         </nav>
         {% if user.is_authenticated %}
         <ul id="slide-out" class="sidenav">
-            <li><a href="{% url 'blog_urls:blog_create' %}" class="black-text ">Add Post</a></li>
-            <li><a href="{% url 'blog_urls:index' %}" class="black-text">My Posts</a></li>
-            <li><a href="{% url 'blog_urls:explore' %}" class="black-text">Explore</a></li>
-            <li><a href="{% url 'members_urls:profile' %}" class="black-text">View My Profile</a></li>
+            <li><a href="{% url 'blog_urls:blog_create' %}" class="waves-effect black-text ">Add Post</a></li>
+            <li><a href="{% url 'blog_urls:index' %}" class="waves-effect black-text">My Posts</a></li>
+            <li><a href="{% url 'blog_urls:explore' %}" class="waves-effect black-text">Explore</a></li>
+            <li><a href="{% url 'members_urls:profile' %}" class="waves-effect black-text">View My Profile</a></li>
             <li><a href="{% url 'logout' %}" class="black-text">Logout</a></li>
         </ul>
         {% else %}
         <ul class="sidenav" id="slide-out">
-            <li><a href="{% url 'members_urls:register_user' %}" class="black-text">Register</a></li>
-            <li><a href="{% url 'members_urls:login' %}" class="black-text">Login</a></li>
+            <li><a href="{% url 'members_urls:register_user' %}" class="waves-effect black-text">Register</a></li>
+            <li><a href="{% url 'members_urls:login' %}" class="waves-effect black-text">Login</a></li>
         </ul> 
         {% endif %}
     </header>
@@ -109,4 +110,21 @@
     });
 });
 </script>
+<script>
+    const page_id = localStorage.getItem('active-tab')
+    $(`#${page_id}`).addClass('active');
+    $('li').on('click', makeActive)
+
+    function makeActive(event) {
+        const clicked = $(event.target);
+        localStorage.setItem('active-tab', clicked.parent().attr('id'))
+        $('li').each(function(){
+            if(clicked.hasClass('active')){
+                clicked.removeClass('active');
+            }
+        });
+    }
+    localStorage.setItem('active-tab', '');
+</script>
+
 </html>
