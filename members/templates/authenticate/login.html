@@ -3,9 +3,19 @@
 {% block main %}
 <br/>
 <div class="container">
-  <center>
-  <h1>Login</h1>
-  </center>
+  <h1 class="center">Login</h1>
+  {% if error %}
+  <div class="row">
+    <div class="col s12">
+      <div class="card red lighten-3">
+        <div class="card-content black-text">
+          <span class="right"><i class="material-icons close">clear</i></span>
+          <p>{{error}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
   <center>
   <form action="" method=POST>
       {% csrf_token %}
@@ -26,14 +36,15 @@
             class="form-control" 
             name= "password">
           </div>
-        
-          
-
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-
-      
+        <button type="submit" class="btn-large blue form-button">Login</button>
+        </form>   
   </form>
   </center>
 </div>
+<script>
+  $close_btn = $('.close');
+  $close_btn.click(function() {
+    $close_btn.parents('div.row').addClass('hidden')
+  })
+</script>
 {% endblock %}

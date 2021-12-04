@@ -30,6 +30,7 @@ def profile(request):
     return render(request, 'authenticate/profile.html')
 
 def login_user(request):
+    error_message = ''
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -38,7 +39,8 @@ def login_user(request):
             login(request, user)
             return redirect('/blogs/')
         else:
-            return redirect('/members/login_user/')
+            error_message = 'Incorrect credentials. Please make sure all the information is entered correctly and try again.'
+            return render(request, 'authenticate/login.html', {'error': error_message})
     else:
         return render(request, 'authenticate/login.html', {})
 
