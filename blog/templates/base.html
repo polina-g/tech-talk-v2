@@ -9,6 +9,8 @@
 
     <title>Tech Talk</title>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- Materialize CSS -->
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -17,44 +19,57 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="navbar-fixed">
+    <header>
         <nav>
-            <div class="nav-wrapper black">
-                <ul class="left">
+            <div class="nav-wrapper nav-styling valign-wrapper">
+                <ul class="nav-left">
                     <li>
                         <a href="{% url 'blog_urls:home' %}" class="left brand-logo">
                             <img src="{% static 'images/partial-logo.png' %}" alt="Tech Talk Logo" width="80">
                         </a>
                     </li>
-                    <li><a href="{% url 'blog_urls:about' %}" class="btn light-blue accent-1 black-text" style="margin-left: 90px;">About Us</a></li>
+                    <li><a href="{% url 'blog_urls:about' %}" class="white-text" style="margin-left: 90px;">About Us</a></li>
                 </ul>
                 {% if user.is_authenticated %}
-                <ul class="center_nav_links">     
-                    <li><a href="{% url 'blog_urls:blog_create' %}" class="light-blue accent-1 btn lighten-4 black-text">Add Post</a></li>
-                    <li><a href="{% url 'blog_urls:index' %}" class="light-blue accent-1 btn lighten-4 black-text">View Posts</a></li>
-                    <li><a href="{% url 'blog_urls:explore' %}" class="light-blue accent-1 btn lighten-4 black-text">Explore</a></li>
+                <ul class="hide-on-med-and-down">      
+                    <li><a href="{% url 'blog_urls:blog_create' %}" class="white-text ">Add Post</a></li>
+                    <li class="active"><a href="{% url 'blog_urls:index' %}" class="white-text">My Posts</a></li>
+                    <li><a href="{% url 'blog_urls:explore' %}" class="white-text">Explore</a></li>
                 </ul>
-                <ul class="right">
-                    <li><a href="{% url 'members_urls:profile' %}" class="btn light-blue accent-1 black-text">View My Profile</a></li>
-                    <li><a href="{% url 'logout' %}" class="btn light-blue accent-1 black-text">Logout</a></li>
+                <ul class="hide-on-med-and-down">
+                    <li><a href="{% url 'members_urls:profile' %}" class="white-text">View My Profile</a></li>
+                    <li><a href="{% url 'logout' %}" class="white-text">Logout</a></li>
                     {% else %}
-                    <ul class="right">
-                        <li><a href="{% url 'members_urls:register_user' %}"class="btn light-blue accent-1 black-text">Register</a></li>
-                         <li><a href="{% url 'members_urls:login' %}" class="btn light-blue accent-1 black-text">Login</a></li>
+                    <ul class="hide-on-med-and-down">
+                        <li><a href="{% url 'members_urls:register_user' %}" class="white-text">Register</a></li>
+                         <li><a href="{% url 'members_urls:login' %}" class="white-text">Login</a></li>
                     {% endif %}
                 </ul>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             </div>
         </nav>
+        {% if user.is_authenticated %}
+        <ul id="slide-out" class="sidenav">
+            <li><a href="{% url 'blog_urls:blog_create' %}" class="black-text ">Add Post</a></li>
+            <li><a href="{% url 'blog_urls:index' %}" class="black-text">My Posts</a></li>
+            <li><a href="{% url 'blog_urls:explore' %}" class="black-text">Explore</a></li>
+            <li><a href="{% url 'members_urls:profile' %}" class="black-text">View My Profile</a></li>
+            <li><a href="{% url 'logout' %}" class="black-text">Logout</a></li>
+        </ul>
+        {% else %}
+        <ul class="sidenav" id="slide-out">
+            <li><a href="{% url 'members_urls:register_user' %}" class="black-text">Register</a></li>
+            <li><a href="{% url 'members_urls:login' %}" class="black-text">Login</a></li>
+        </ul> 
+        {% endif %}
     </header>
     <main>
         {% block main %}
         {% endblock %}
     </main>
-    <footer class="page-footer black">
+    <footer class="page-footer black center">
         <a href="https://www.linkedin.com/" 
         target="_blank" 
         class="btn-floating btn-small pulse">
@@ -87,4 +102,11 @@
         </div>
     </footer>
 </body>
+<script>
+    $(document).ready(function(){
+    $('.sidenav').sidenav({
+        edge: 'right'
+    });
+});
+</script>
 </html>

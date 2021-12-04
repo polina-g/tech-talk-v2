@@ -16,11 +16,15 @@ main {
 footer {
     padding-top: 0;
     height: 70px;
-    
 }
 
 nav {
     height: 80px;
+}
+
+.nav-styling {
+    display: flex;
+    justify-content: space-between;
 }
 
 .landing-main-container{
@@ -48,8 +52,6 @@ nav {
     opacity: 0.4;
 }
 
-
-
 .purple-card{
     background-color: purple;
    
@@ -70,10 +72,6 @@ nav {
 
 .hidden {
     display: none;
-}
-
-.center_nav_links {
-    margin-left: 35%;
 }
 
 .header-text{
