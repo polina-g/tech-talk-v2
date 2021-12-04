@@ -95,3 +95,11 @@ nav ul a {
 .header-text-no-margin {
     margin-top: 0; 
 }
+
+.form-button {
+    margin: 20px 0 20px 0;
+}
+
+.close {
+    cursor: pointer;
+}

@@ -2,19 +2,32 @@
 
 {% block main %}
 <div class="container">
-  <p> There was an error with your form.. </p>
-  
-  
   <h1 class="center">Sign Up!</h1>
+  {% if error %}
+  <div class="row">
+    <div class="col s12">
+      <div class="card red lighten-3">
+        <div class="card-content black-text">
+          <span class="right"><i class="material-icons close">clear</i></span>
+          <p>{{error}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
   <br/>
   <form action="{% url 'members_urls:register_user' %}" method=POST>
     {% csrf_token %}
     {{form.as_p}}
-    
-  
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn blue form-button">Submit</button>
   </form>
 </div>
+<script>
+  $close_btn = $('.close');
+  $close_btn.click(function() {
+    $close_btn.parents('div.row').addClass('hidden')
+  })
+</script>
 {% endblock %}
 
 

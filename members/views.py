@@ -47,6 +47,7 @@ def logout_user(request):
     return redirect('home')
 
 def register_user(request):
+    error_message = ''
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -56,10 +57,13 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('/blogs/')
+        else:
+            error_message = 'An unexpected error occured! Please make sure all the information is entered correctly and try again.'
     else:
         form = UserCreationForm()
     
-    return render(request, 'authenticate/register_user.html', {'form': form})
+    return render(request, 'authenticate/register_user.html', {'form': form,
+    'error': error_message})
 
 class UserEditView(generic.UpdateView):
     form_class = UserChangeForm

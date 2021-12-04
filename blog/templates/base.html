@@ -44,8 +44,8 @@
                     <li><a href="{% url 'logout' %}" class="waves-effect">Logout</a></li>
                     {% else %}
                     <ul class="hide-on-med-and-down">
-                        <li><a href="{% url 'members_urls:register_user' %}" class="waves-effect">Register</a></li>
-                         <li><a href="{% url 'members_urls:login' %}" class="waves-effect">Login</a></li>
+                        <li><a href="{% url 'members_urls:login' %}" class="waves-effect">Login</a></li>
+                        <li class="active"><a href="{% url 'members_urls:register_user' %}" class="waves-effect">Get Started</a></li>
                     {% endif %}
                 </ul>
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -61,8 +61,8 @@
         </ul>
         {% else %}
         <ul class="sidenav" id="slide-out">
-            <li><a href="{% url 'members_urls:register_user' %}" class="waves-effect black-text">Register</a></li>
             <li><a href="{% url 'members_urls:login' %}" class="waves-effect black-text">Login</a></li>
+            <li><a href="{% url 'members_urls:register_user' %}" class="waves-effect black-text">Get Started</a></li>
         </ul> 
         {% endif %}
     </header>
