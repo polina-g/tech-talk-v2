@@ -3,15 +3,15 @@
 ### A blogging platform for the techies of the world
 
 # Technologies Used: 
-### HTML5
-### Python
-### Django
-### Javascript
-### Jquery
-### Materialize CSS
-### Postgresql
-### AWS
-### Disqus 
+* ### HTML5
+* ### Python
+* ### Django
+* ### Javascript
+* ### Jquery
+* ### Materialize CSS
+* ### Postgresql
+* ### AWS
+* ### Disqus 
 
 # Screenshots
 
