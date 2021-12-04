@@ -20,7 +20,7 @@ class BlogEntry(models.Model):
 class Comment(models.Model):
     comment_text = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog_entry = models.ForeignKey(BlogEntry, on_delete=models.CASCADE)
 
     def __str__(self):
