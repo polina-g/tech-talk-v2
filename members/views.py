@@ -1,15 +1,12 @@
-from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.db import models
-from django.db.models import fields
-from django.views import generic
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic import DetailView
 from members.models import Profile
-from .models import User
-
+from .forms import ProfileForm
+from django.contrib.auth.models import User
 
 class ShowProfilePageView(DetailView):
     model = Profile
@@ -67,10 +64,21 @@ def register_user(request):
     return render(request, 'authenticate/register_user.html', {'form': form,
     'error': error_message})
 
-class UserEditView(generic.UpdateView):
-    form_class = UserChangeForm
+class UserEditView(UpdateView):
+    model = User
+    template_name = 'authenticate/edit_user.html'
+    success_url = ('/profile/')
+    fields = ('username', 'first_name', 'last_name', 'email')
+
+    def get_object(self):
+        return self.request.user
+
+
+class ProfileEditView(UpdateView):
+    model = Profile
     template_name = 'authenticate/edit_profile.html'
-    success_url = ('/blogs/')
+    success_url = ('/profile/')
+    fields = ('user', 'bio', 'profile_pic', 'profile_background_pic', 'website_url', 'youtube_url', 'github_url', 'linkedin_url', 'twitter_url')
 
     def get_object(self):
         return self.request.user

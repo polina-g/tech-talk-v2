@@ -3,11 +3,11 @@
 
 {% block main %}
 <div class="container">
-      <h2 class="center">Edit Profile</h2>
+      <h2 class="center">Edit User Info</h2>
       <form class="validate" method="POST">  
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary" onclick="M.toast({html: 'Your profile has been updated'})">Update Profile</button>  
+            <button type="submit" class="btn btn-primary" onclick="M.toast({html: 'Your profile has been updated'})">Update User Infro</button>  
    </form>
 </div>
 
