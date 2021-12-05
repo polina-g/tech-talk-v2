@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime, date
-from django.db.models.deletion import CASCADE
+from django.urls import reverse
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete= models.CASCADE)
@@ -16,3 +16,6 @@ class Profile(models.Model):
     
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('profile')

@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic import DetailView
+from django.views.generic.list import ListView
 from members.models import Profile
 from django.contrib.auth.models import User
 
@@ -20,8 +21,8 @@ class ShowProfilePageView(DetailView):
 def success(request):
     return render('authenticate/success.html')
 
-def profile(request):
-    return render(request, 'authenticate/profile.html')
+# def profile(request):
+#     return render(request, 'authenticate/profile.html')
 
 def login_user(request):
     error_message = ''
@@ -52,7 +53,7 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/blogs/')
+            return redirect('register/create_profile/')
         else:
             error_message = 'An unexpected error occured! Please make sure all the information is entered correctly and try again.'
     else:
@@ -60,6 +61,18 @@ def register_user(request):
     
     return render(request, 'authenticate/register_user.html', {'form': form,
     'error': error_message})
+
+class ProfileCreate(CreateView):
+    model = Profile
+    fields = ('bio', 'profile_pic', 'profile_background_pic', 'website_url', 'youtube_url', 'github_url', 'linkedin_url', 'twitter_url')
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class ProfileView(DetailView):
+    model = Profile
+    template_name = '/authenticate/profile.htlm'
 
 class UserEditView(UpdateView):
     model = User
@@ -75,9 +88,5 @@ class ProfileEditView(UpdateView):
     model = Profile
     template_name = 'authenticate/edit_profile.html'
     fields = ('bio', 'profile_pic', 'profile_background_pic', 'website_url', 'youtube_url', 'github_url', 'linkedin_url', 'twitter_url')
-    success_url = ('/members/profile/')
-
-    def get_object(self):
-        return self.request.user
 
   
