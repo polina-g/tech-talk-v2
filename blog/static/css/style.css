@@ -89,7 +89,7 @@ nav ul a {
 }
 
 .header-text{
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .header-text-no-margin {
@@ -136,4 +136,8 @@ nav ul a {
 
 .profile-btn {
     width: 125px; 
+}
+
+.center-animation {
+    margin: 0 auto; 
 }
