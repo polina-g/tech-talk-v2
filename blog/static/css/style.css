@@ -141,3 +141,27 @@ nav ul a {
 .center-animation {
     margin: 0 auto; 
 }
+
+@media screen and (max-width: 400px) {
+    .profile-right {
+        padding-left: 0 !important;
+    }
+    
+    .profile-left {
+        padding-left: 0 !important;
+        margin-bottom: 0;
+    }
+    
+    .profile-left > img {
+        margin-left: 0;
+    }
+    
+    .profile-links {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; 
+        
+    }
+  }
