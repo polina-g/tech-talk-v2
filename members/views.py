@@ -8,16 +8,6 @@ from django.views.generic.list import ListView
 from members.models import Profile
 from django.contrib.auth.models import User
 
-class ShowProfilePageView(DetailView):
-    model = Profile
-    template_name = 'authenticate/user_profile.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
-        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-        context["page_user"] = page_user
-        return context
-
 def success(request):
     return render('authenticate/success.html')
 
@@ -72,7 +62,7 @@ class ProfileCreate(CreateView):
 
 class ProfileView(DetailView):
     model = Profile
-    template_name = '/authenticate/profile.htlm'
+    template_name = 'authenticate/profile.html'
 
 class UserEditView(UpdateView):
     model = User

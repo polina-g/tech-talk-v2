@@ -18,4 +18,9 @@ class Profile(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('profile')
+        return reverse('profile', kwargs={'pk': self.user.id})
+
+def get_user_id(self):
+    return f'{self.id}'
+
+User.add_to_class("get_user_id", get_user_id)
