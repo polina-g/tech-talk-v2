@@ -5,7 +5,6 @@ from django.views.generic.edit import UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic import DetailView
 from members.models import Profile
-from .forms import ProfileForm
 from django.contrib.auth.models import User
 
 class ShowProfilePageView(DetailView):
@@ -13,9 +12,7 @@ class ShowProfilePageView(DetailView):
     template_name = 'authenticate/user_profile.html'
 
     def get_context_data(self, *args, **kwargs):
-        users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
-
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         context["page_user"] = page_user
         return context
@@ -67,7 +64,7 @@ def register_user(request):
 class UserEditView(UpdateView):
     model = User
     template_name = 'authenticate/edit_user.html'
-    success_url = ('/profile/')
+    success_url = ('/members/profile/')
     fields = ('username', 'first_name', 'last_name', 'email')
 
     def get_object(self):
@@ -77,8 +74,8 @@ class UserEditView(UpdateView):
 class ProfileEditView(UpdateView):
     model = Profile
     template_name = 'authenticate/edit_profile.html'
-    success_url = ('/profile/')
-    fields = ('user', 'bio', 'profile_pic', 'profile_background_pic', 'website_url', 'youtube_url', 'github_url', 'linkedin_url', 'twitter_url')
+    fields = ('bio', 'profile_pic', 'profile_background_pic', 'website_url', 'youtube_url', 'github_url', 'linkedin_url', 'twitter_url')
+    success_url = ('/members/profile/')
 
     def get_object(self):
         return self.request.user

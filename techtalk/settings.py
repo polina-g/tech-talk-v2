@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'blog',
     'members',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,6 +129,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL= "/blogs/"
 
 LOGOUT_REDIRECT_URL= "/"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 # Configure Django App for Heroku.
 import django_heroku

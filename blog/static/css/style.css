@@ -103,3 +103,7 @@ nav ul a {
 .close {
     cursor: pointer;
 }
+
+.form-margin {
+    margin: 50px;
+}

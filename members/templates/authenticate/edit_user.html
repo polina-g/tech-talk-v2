@@ -1,14 +1,22 @@
 
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block main %}
 <div class="container">
-      <h2 class="center">Edit User Info</h2>
-      <form class="validate" method="POST">  
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary" onclick="M.toast({html: 'Your profile has been updated'})">Update User Infro</button>  
-   </form>
+      <div class="z-depth-4">
+            <div class="form-margin">
+                  <form class="validate" method="POST">
+                        <h2 class="center" style="padding-top: 30px;">Edit User Info</h2>  
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="row">
+                              <button type="submit" class="btn blue white-text form-button">Update User Info</button>  
+                              <a href="{% url 'members_urls:profile' %}" class="btn yellow darken-3 white-text">Cancel</a>
+                        </div>
+                  </form>
+            </div>
+      </div>
 </div>
 
 
