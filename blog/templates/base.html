@@ -42,7 +42,9 @@
                     <li id="explore"><a href="{% url 'blog_urls:explore' %}" class="waves-effect">Explore</a></li>
                 </ul>
                 <ul class="hide-on-med-and-down">
+                    {% if user.get_userprofile_id %}
                     <li><a href="{% url 'members_urls:profile' user.get_userprofile_id %}" class="waves-effect">My Profile</a></li>
+                    {% endif %}
                     <li><a href="{% url 'logout' %}" class="waves-effect">Logout</a></li>
                     {% else %}
                     <ul class="hide-on-med-and-down">
@@ -58,7 +60,9 @@
             <li><a href="{% url 'blog_urls:blog_create' %}" class="waves-effect black-text ">Add Post</a></li>
             <li><a href="{% url 'blog_urls:index' %}" class="waves-effect black-text">My Posts</a></li>
             <li><a href="{% url 'blog_urls:explore' %}" class="waves-effect black-text">Explore</a></li>
+            {% if user.get_userprofile_id %}
             <li><a href="{% url 'members_urls:profile' user.get_userprofile_id %}" class="waves-effect black-text">My Profile</a></li>
+            {% endif %}
             <li><a href="{% url 'logout' %}" class="black-text">Logout</a></li>
         </ul>
         {% else %}

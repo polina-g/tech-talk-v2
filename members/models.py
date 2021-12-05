@@ -6,7 +6,7 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete= models.CASCADE)
     bio = models.TextField()
-    profile_pic = models.CharField(max_length=255, default="images/default_profile_pic.jpeg")
+    profile_pic = models.CharField(max_length=255, default="/static/images/default_profile_pic.jpeg",)
     profile_background_pic = models.CharField(max_length=255, null=True, blank=True)
     website_url = models.CharField(max_length=255, null=True, blank=True)
     youtube_url = models.CharField(max_length=255, null=True, blank=True)
