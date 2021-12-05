@@ -43,7 +43,7 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('register/create_profile/')
+            return redirect('/members/register/create_profile/')
         else:
             error_message = 'An unexpected error occured! Please make sure all the information is entered correctly and try again.'
     else:
@@ -55,6 +55,7 @@ def register_user(request):
 class ProfileCreate(CreateView):
     model = Profile
     fields = ('bio', 'profile_pic', 'profile_background_pic', 'website_url', 'youtube_url', 'github_url', 'linkedin_url', 'twitter_url')
+    success_url = '/blogs/'
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2 class="center">Welcome, {{ user.get_username }}!</h2>
+<h4 class="center">Tell us a little bit about yourself</h4>
+
+<div class="container">
+    <div class="z-depth-4">
+          <div class="form-margin">
+                <form class="validate" method="POST">
+                    <h6 style="padding-top: 30px;">Please fill out the form below:</h6>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" class="btn blue form-button" value="continue">
+                </form>
+          </div>
+    </div>
+</div>
+{% endblock %}
