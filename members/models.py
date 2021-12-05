@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 
 class Profile(models.Model):
@@ -18,7 +18,7 @@ class Profile(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('profile', kwargs={'pk': self.user.id})
+        return reverse('members_urls:profile', kwargs={'pk': self.user.id})
 
 def get_user_id(self):
     return f'{self.id}'

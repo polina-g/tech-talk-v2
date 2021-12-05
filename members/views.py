@@ -67,7 +67,8 @@ class ProfileView(DetailView):
 class UserEditView(UpdateView):
     model = User
     template_name = 'authenticate/edit_user.html'
-    success_url = ('/members/profile/')
+    def get_success_url(self):
+        return f'/members/profile/{self.request.user.id}'
     fields = ('username', 'first_name', 'last_name', 'email')
 
     def get_object(self):
