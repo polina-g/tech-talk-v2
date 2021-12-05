@@ -1,18 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic import DetailView
-from django.views.generic.list import ListView
 from members.models import Profile
 from django.contrib.auth.models import User
 
 def success(request):
     return render('authenticate/success.html')
-
-# def profile(request):
-#     return render(request, 'authenticate/profile.html')
 
 def login_user(request):
     error_message = ''
