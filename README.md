@@ -35,7 +35,7 @@
 <br><br>
 
 # Getting Started
-Visit the Deployed Website [Here](https://tech-talk-pak.herokuapp.com/)
+Visit the Deployed Website [Here](https://tech-talk-v2.herokuapp.com/)
 * After navigating to the website, you can create an account to start using the app!
 * If you want to look around without creating a new account, feel free to use our guest login: <br>
     _Login_: Guest <br>
