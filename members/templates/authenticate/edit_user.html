@@ -1,6 +1,5 @@
 
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block main %}
 <div class="container">
@@ -9,7 +8,7 @@
                   <form class="validate" method="POST">
                         <h2 class="center" style="padding-top: 30px;">Edit User Info</h2>  
                         {% csrf_token %}
-                        {{ form|crispy }}
+                        {{ form.as_p }}
                         <div class="row">
                               <button type="submit" class="btn blue white-text form-button">Update User Info</button>  
                               <a href="{% url 'members_urls:profile' user.get_userprofile_id %}" class="btn yellow darken-3 white-text">Cancel</a>

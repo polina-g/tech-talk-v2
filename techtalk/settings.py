@@ -130,8 +130,6 @@ LOGIN_REDIRECT_URL= "/blogs/"
 
 LOGOUT_REDIRECT_URL= "/"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
-
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
