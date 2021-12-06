@@ -6,12 +6,12 @@
 <body>
 <div class="container">
     <div class="col s12 m12">
-        {% if user.profile.profile_background_pic %}
-            <img src=" {{ user.profile.profile_background_pic }}" width=100% height=200>
+        {% if object.profile_background_pic %}
+            <img src=" {{ object.profile.profile_background_pic }}" width=100%>
         {% endif %}
         <div class="card horizontal profile_card z-depth-3">
             <div class="card-image profile-left">
-                <img src="{{ user.profile.profile_pic }}" width=150 height=150 style="border-radius: 50%; margin-top: 40px;">
+                <img src="{{ object.user.profile.profile_pic }}" width=150 height=150 style="border-radius: 50%; margin-top: 40px;">
                 <span>
                     <div class="profile-links">
                         {% if object.website_url %}
@@ -40,16 +40,18 @@
             <div class="card-stacked">
                 <div class="card-content profile-right">
                     <div class="card-title">
-                        <h1>{{ user.username }} </h1>
+                        <h1>{{ object.user.username }} </h1>
                     </div>
-                    <h5>{{ object.bio}} </h5>
+                    <h5>{{ object.bio }} </h5>
                 </div>
+                {% if user.id == object.user.id %}
                 <div class="row right-align">
                     <div class="card-action">
                         <a href="{% url 'members_urls:edit_user' %}" class="btn blue lighten-4 black-text">Edit User Info</a>
                         <a href="{% url 'members_urls:edit_profile' object.id %}" class="btn blue lighten-4 black-text">Edit Profile</a>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
