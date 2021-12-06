@@ -61,7 +61,7 @@ Take a look at our:
 | --------- | ------------ | ----- |
 | Polina Gorbunova | [LinkedIn](https://www.linkedin.com/in/polina-g/), [Github](https://github.com/polina-g) | Full Stack Developer, Github Manager, Database Manager, Wireframes, Authorization, Deployment |
 | Alba Molina |[LinkenIn](https://www.linkedin.com/in/albamolina/), [Github](https://github.com/alba-molina-nyc) | Full Stack Developer, Authentication, Market/Product Strategist |
-| Keara Pereira | [LinkenIn](https://www.linkedin.com/in/keara-p-b5a4a6222/), [Github](https://github.com/perkea) | Full Stack Developer, Scrum Manager, Designer, Trello Board |
+| Keara Pereira | [LinkenIn](https://www.linkedin.com/in/keara-p-b5a4a6222/), [Github](https://github.com/perkea) | Full Stack Developer, Authorization, Scrum Manager, Designer, Trello Board |
 
 
 
